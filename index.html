@@ -4,84 +4,152 @@
     <meta charset="utf-8">
 
     <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="style.css">
 
-    <title>LandyCandy Limited</title>
+    <title>LandyCandy</title>
   </head>
   <body>
-    <div class="container">
-      <div class="left-banner">
+    <div class="container-fluid" id="main-wrapper">
+      <div class="row main-wrapper-row">
+        <div class="left-banner col-3">
+          <img class="rounded-circle img-fluid left-banner-img" src="icons/profile_pic.jpg">
+          <h1 class="left-banner-name">Richard Landy</h1>
+          <h3 class="left-banner-profession">Software Engineer</h3>
 
-        <div class="left-banner-name">
-          Richard Landy
+          <div class="left-banner-line-break"> </div>
+
+          <h2 class="left-banner-header">Contact Information</h2>
+          <div class="left-banner-contact">
+            <a target="_blank"
+               rel="noopener noreferrer"
+               class="text-decoration-none"
+               href="https://www.linkedin.com/in/richard-landy/">
+               linkedin.com/in/richard-landy/
+            </a>
+          </div>
+          <div class="left-banner-contact">
+            <a target="_blank"
+               rel="noopener noreferrer"
+               class="text-decoration-none"
+               href="https://www.Github.com/LandyCandy">
+               Github.com/LandyCandy
+            </a>
+          </div>
+          <div class="left-banner-contact">
+            <a target="_blank"
+               rel="noopener noreferrer"
+               class="text-decoration-none"
+               href="https://www.google.com/maps/place/Boulder,+CO/@40.0292888,-105.3100169,12"
+               class="badge badge-dark">
+               Boulder, Colorado
+            </a>
+          </div>
+
+          <div class="left-banner-line-break"> </div>
+
+          <h2 class="left-banner-header">Skills</h2>
+          <div class="container left-banner-skills">
+            <div class="row justify-content-md-center">
+              <div class="col col-lg-4">Python</div>
+              <div class="col col-lg-4">NumPy</div>
+            </div>
+
+            <div class="row justify-content-md-center">
+              <div class="col col-lg-4">Pandas</div>
+              <div class="col col-lg-4">Dask</div>
+            </div>
+
+            <div class="row justify-content-md-center">
+              <div class="col col-lg-4">AWS</div>
+              <div class="col col-lg-4">GCP</div>
+            </div>
+
+            <div class="row justify-content-md-center">
+              <div class="col col-lg-4">Kubernetes</div>
+              <div class="col col-lg-4">Docker</div>
+            </div>
+
+            <div class="row justify-content-md-center">
+              <div class="col col-lg-4">Airflow</div>
+              <div class="col col-lg-4">ELK</div>
+            </div>
+
+            <div class="row justify-content-md-center">
+              <div class="col col-lg-4">Linux/Unix</div>
+              <div class="col col-lg-4">Java</div>
+            </div>
+          </div>
+
+          <div class="left-banner-line-break"> </div>
+          <h2 class="left-banner-header">Education</h2>
+          <div class="left-banner-skills">
+            <div><strong>Columbia University</strong></div>
+            <div><strong>Bachelor of Arts</strong></div>
+            <div>Computer Science</div>
+            <div>Artificial Intelligence Concentration</div>
+            <div>Class of 2016</div>
+          </div>
+
+          <div class="left-banner-line-break"> </div>
+          <h2 class="left-banner-header">Awards</h2>
+          <div class="left-banner-skills">
+            <div><strong>Manager's Choice Award</strong></div>
+            <div>IBM Watson Health</div>
+            <div>2016</div>
+          </div>
         </div>
 
-        <div class="left-banner-profession">
-          Software Engineer
-        </div>
+        <div class="center-content col-9 mr-auto">
+          <h2>STATEMENT</h2>
+          <div class="center-content-line-break"> </div>
+          <div class="center-content-statement">
+            Software Engineer with a demonstrated history of building technology in the energy, healthcare and e-commerce spaces.
+            Skilled in Python, Data Science tools and Cloud infrastructure Technology.
+            Strong engineering professional with a Bachelor's Degree in Computer Science from Columbia University.
+          </div>
 
-        <div class="left-banner-line-break"> </div>
+          <h2>EXPERIENCE</h2>
+          <div class="center-content-line-break"> </div>
 
-        <div class="left-banner-contact">
-          LINKEDIN.COM/IN/RICHARD-LANDY
-        </div>
+          <div class="center-content-job">
+            <h4>Cloud Native Architect</h4>
+            <div class="center-content-job-company-date">Accenture, Denver, CO  /  December 2020 - Present</div>
+            <div>• TBD</div>
+          </div>
 
-        <div class="left-banner-contact">
-          Colorado
-        </div>
+          <div class="center-content-job">
+            <h4>Software Engineer | Data Engineer</h4>
+            <div class="center-content-job-company-date">GridCure, Inc. Boulder, CO  /  June 2017 - Present</div>
+            <div>• Architected and Developed multiple APIs for the collection, parsing and exposure of internal and external data sources</div>
+            <div>• Built out and designed system for the automation of ongoing data ingestion using AWS and GCP resources</div>
+            <div>• Advocated for and led several efforts to add new technologies to existing tech stack including AWS lambda functions, auto-scaling groups and kubernetes</div>
+            <div>• Developed generalized tool for automatically detecting and filling gaps in time-series data</div>
+            <div>• Refactored and optimized modeling scripts for time-series energy usage data and asset health data</div>
+            <div>• Optimized mapping and geo-location data for customers assets across the continental United States and Europe</div>
+            <div>• Fostered team “get it done” attitude and was usually point person for time-sensitive tasks</div>
+          </div>
 
-        <div class="left-banner-skills">
-          <p>Python</p>
-          <p>NumPy</p>
-          <p>Pandas</p>
-          <p>Dask</p>
-          <p>AWS</p>
-          <p>GCP</p>
-          <p>Kubernetes</p>
-          <p>Docker</p>
-          <p>Airflow</p>
-          <p>ELK</p>
-          <p>Linux/Unix</p>
-          <p>Java</p>
+          <div class="center-content-job">
+            <h4>Software Engineer</h4>
+            <div class="center-content-job-company-date">IBM Watson Health, New York, NY  /  January 2016 – April 2017</div>
+            <div>• Developed Internal Operations Dashboard for Server Health  and Cost Management</div>
+            <div>• Built data visualization tools for insight into server usage</div>
+            <div>• Developed automation script for user management, reducing required labor-hours by orders of magnitude</div>
+            <div>• Assisted in Project Management and technical task scoping across the Watson Health Cloud Commercial Operations department</div>
+          </div>
+
+          <div class="center-content-job">
+            <h4>Front-End Web Developer, Part-time</h4>
+            <div class="center-content-job-company-date">1stdibs Inc., New York, NY  /  May 2014 – December 2015</div>
+            <div>• Refactored Core data model functionality</div>
+            <div>• Created publication attributes for item releases, allowing users to customize and dynamically manage publications</div>
+            <div>• Created item model tests to exercise microservice architecture</div>
+          </div>
+
         </div>
 
       </div>
-
-      <div class="center-content">
-        <h2>EXPERIENCE</h2>
-        <div class="center-content-line-break"> </div>
-
-        <div class="center-content-job">
-          <h4>Software Engineer | Data Engineer</h4>
-          <p class="center-content-job-company-date">GridCure, Inc. Boulder, CO  /  June 2017 - Present</p>
-          <p>• Architected and Developed multiple APIs for the collection, parsing and exposure of internal and external data sources</p>
-          <p>• Built out and designed system for the automation of ongoing data ingestion using AWS and GCP resources</p>
-          <p>• Advocated for and led several efforts to add new technologies to existing tech stack including AWS lambda functions, auto-scaling groups and kubernetes</p>
-          <p>• Developed generalized tool for automatically detecting and filling gaps in time-series data</p>
-          <p>• Refactored and optimized modeling scripts for time-series energy usage data and asset health data</p>
-          <p>• Optimized mapping and geo-location data for customers assets across the continental United States and Europe</p>
-          <p>• Fostered team “get it done” attitude and was usually point person for time-sensitive tasks</p>
-        </div>
-
-        <div class="center-content-job">
-          <h4>Software Engineer</h4>
-          <p class="center-content-job-company-date">IBM Watson Health, New York, NY  /  January 2016 – April 2017</p>
-          <p>• Developed Internal Operations Dashboard for Server Health  and Cost Management</p>
-          <p>• Built data visualization tools for insight into server usage</p>
-          <p>• Developed automation script for user management, reducing required labor-hours by orders of magnitude</p>
-          <p>• Assisted in Project Management and technical task scoping across the Watson Health Cloud Commercial Operations department</p>
-        </div>
-
-        <div class="center-content-job">
-          <h4>Front-End Web Developer, Part-time</h4>
-          <p class="center-content-job-company-date">1stdibs Inc., New York, NY  /  May 2014 – December 2015</p>
-          <p>• Refactored Core data model functionality</p>
-          <p>• Created publication attributes for item releases, allowing users to customize and dynamically manage publications</p>
-          <p>• Created item model tests to exercise microservice architecture</p>
-        </div>
-
-      </div>
-
     </div>
   </body>
 </html>
