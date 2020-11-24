@@ -1,0 +1,98 @@
+html,
+body {
+  padding: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+}
+
+.container {
+  padding: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  height: 100;
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.left-banner {
+  float: left;
+  height: 100%;
+  align: left;
+  align-items: center;
+  justify-content: center;
+  background-color: #b59fd1;
+}
+
+.left-banner-name {
+  padding-top: 1em;
+  margin: 0;
+  text-align: center;
+  font: xxx-large "Geomanist", sans-serif;
+}
+
+.left-banner-profession {
+  padding-top: 0.25em;
+  padding-bottom: 1em;
+  margin: 0;
+  text-align: center;
+  font: x-large "Geomanist", sans-serif;
+}
+
+.left-banner-line-break {
+  background-color: black;
+  height: 3px;
+  margin: 0 1em 0 1em;
+}
+
+.left-banner-contact {
+  padding-top: 2em;
+  margin: 0;
+  text-align: center;
+  font: large "Geomanist", sans-serif;
+}
+
+.left-banner-contact-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.left-banner-skills {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 5em;
+  text-align: center;
+  font-weight: bold;
+}
+
+.center-content {
+  float: left;
+  height: 100%;
+  padding-left: 2em;
+  align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-content-job {
+  margin-bottom: 2em;
+}
+
+.center-content-job p {
+  margin-left: 1em;
+}
+
+.center-content-job-company-date {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.center-content-line-break {
+  background-color: black;
+  margin-right: 2em;
+  height: 3px;
+}

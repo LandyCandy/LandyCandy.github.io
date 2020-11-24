@@ -1,2 +1,4 @@
-# LandyCandy.io
-LandyCandy.io
+# LandyCandy.github.io
+Made for reckless personal use
+
+![](reckless.gif)
