@@ -1,0 +1,29 @@
+#main-wrapper {
+  height: 100vh;
+  background-image: url('../icons/turkey_burn_2020.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.white-text {
+  color: white;
+  letter-spacing: 8px;
+}
+
+.vertical-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hr-light {
+  border-top: 3px solid #fff;
+  width: 80px;
+}
+
+.text-decoration-none, .text-decoration-none:hover {
+  color: white;
+  text-decoration: none;
+  border-color: white;
+}
