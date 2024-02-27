@@ -1,0 +1,23 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  .image-container {
+    height: 95vh; /* Use 100% of the viewport height */
+    display: flex;
+    align-items: stretch; /* This will help in aligning the image to fill the container */
+  }
+
+  .image-container img {
+    width: auto; /* Keep the original width of the image */
+    height: 100%; /* Scale the height to fill the container */
+    margin: auto; /* Center the image */
+  }
+
+  .vertical-center {
+    min-height: 5vh;
+    display: flex;
+    align-items: center;
+  }
