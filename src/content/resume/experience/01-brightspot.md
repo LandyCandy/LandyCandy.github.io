@@ -5,7 +5,7 @@ period: 2023 — present
 order: 1
 ---
 
-- Sole owner of IMPEL, BrightSpot's imaging and inspection application — grown from a single-shot prototype on modified consumer cameras into a production platform for inline manufacturing QC.
+- Owner of IMPEL, BrightSpot's imaging and inspection application — grown from a single-shot prototype on modified consumer cameras into a production platform for inline manufacturing QC.
 - Architected its multiprocessing pub/sub core: concurrent control of industrial cameras and power supplies, with processing offloaded to a subprocess pool and a CUDA-enabled machine learning pipeline.
 - Built EL and PL capture orchestration — arrays of power supplies under active monitoring to hold LED luminous intensity stable through long exposures.
 - Integrated IMPEL into inline manufacturing QC: MES integration via PLC, REST API control, and a range of supported peripherals.
