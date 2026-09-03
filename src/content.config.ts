@@ -46,6 +46,8 @@ const education = defineCollection({
     degree: z.string(),
     institution: z.string(),
     year: z.string(),
+    // Optional qualifier shown after the institution, e.g. a concentration.
+    detail: z.string().optional(),
     order: z.number().default(99),
   }),
 });
@@ -74,6 +76,10 @@ const copy = defineCollection({
       .array(z.object({ label: z.string(), items: z.array(z.string()) }))
       .optional(),
     disclaimer: z.string().optional(),
+    // Resume "Recognition" section; year optional.
+    awards: z
+      .array(z.object({ title: z.string(), org: z.string(), year: z.string().optional() }))
+      .optional(),
   }),
 });
 

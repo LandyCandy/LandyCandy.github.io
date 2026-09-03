@@ -13,7 +13,7 @@ export const SITE = {
 
   // Set once and it appears in the footer, contact page, and JSON-LD.
   // Leave empty to hide LinkedIn everywhere.
-  linkedin: '',
+  linkedin: 'https://www.linkedin.com/in/richard-landy/',
 
   // Path to the committed resume PDF (e.g. '/richard-landy-resume.pdf').
   // Leave empty to hide the download button until the PDF exists.

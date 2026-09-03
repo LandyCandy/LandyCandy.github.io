@@ -28,4 +28,13 @@ skillGroups:
       - Git · code review
       - Agentic AI tooling
       - Windows development
+awards:
+  - title: "R&D 100 Award finalist"
+    org: BrightSpot Automation
+  - title: TechStar award
+    org: Accenture Technology
+    year: '2023'
+  - title: "Manager's Choice Award"
+    org: IBM Watson Health
+    year: '2016'
 ---

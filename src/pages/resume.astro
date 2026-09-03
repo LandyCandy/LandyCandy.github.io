@@ -20,6 +20,7 @@ const resumeCopy = (await getEntry('copy', 'resume'))?.data;
 const skillGroups =
   resumeCopy?.skillGroups ??
   (resumeCopy?.skills ? [{ label: 'skills', items: resumeCopy.skills }] : []);
+const awards = resumeCopy?.awards ?? [];
 ---
 
 <Base title="Resume" description={`Resume of ${SITE.name} — ${SITE.role}.`}>
@@ -82,10 +83,29 @@ const skillGroups =
         <div class="flex flex-wrap items-baseline justify-between gap-2">
           <p class="text-sm text-mid">
             <span class="font-semibold text-hi">{e.data.degree}</span> · {e.data.institution}
+            {e.data.detail && <> · {e.data.detail}</>}
           </p>
           <span class="ro">{e.data.year}</span>
         </div>
       ))
+    }
+
+    {
+      awards.length > 0 && (
+        <>
+          <h2 class="mt-12 mb-6 border-b border-line pb-2 font-display text-2xl font-semibold">
+            Recognition
+          </h2>
+          {awards.map((a) => (
+            <div class="mb-2 flex flex-wrap items-baseline justify-between gap-2">
+              <p class="text-sm text-mid">
+                <span class="font-semibold text-hi">{a.title}</span> · {a.org}
+              </p>
+              {a.year && <span class="ro">{a.year}</span>}
+            </div>
+          ))}
+        </>
+      )
     }
 
     <p class="ro no-print mt-14">
