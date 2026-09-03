@@ -31,6 +31,7 @@ skillGroups:
 awards:
   - title: "R&D 100 Award finalist"
     org: BrightSpot Automation
+    year: '2026'
   - title: TechStar award
     org: Accenture Technology
     year: '2023'
