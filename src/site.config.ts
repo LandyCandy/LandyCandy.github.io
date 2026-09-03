@@ -25,6 +25,16 @@ export const SITE = {
   // Leave empty to hide the contact form until it exists.
   formspreeId: '',
 
+  // Page flags. A page set to false is offline until its content is ready:
+  // it leaves the nav, the homepage, and the sitemap, and its URL returns the
+  // site's 404 page. Flip to true to launch it. Home and Contact are always on.
+  pages: {
+    projects: true,
+    blog: false,
+    resume: true,
+    services: false,
+  },
+
   // Footer readout. No street address anywhere — coordinates only.
   coordinates: '40.00518° N · 105.16161° W',
 } as const;

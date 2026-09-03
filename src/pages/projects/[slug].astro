@@ -1,8 +1,10 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { SITE } from '../../site.config';
 
 export async function getStaticPaths() {
+  if (!SITE.pages.projects) return []; // page flag — see site.config.ts
   const projects = await getCollection('projects', ({ data }) => !data.draft);
   return projects.map((project) => ({
     params: { slug: project.id },

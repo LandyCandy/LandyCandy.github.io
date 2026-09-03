@@ -1,10 +1,13 @@
 ---
+import { SITE } from '../site.config';
+
+// Pages flagged off in site.config.ts drop out of the nav.
 const links = [
-  { href: '/projects', label: 'Projects' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/resume', label: 'Resume' },
-  { href: '/services', label: 'Services', cta: true },
-];
+  { key: 'projects', href: '/projects', label: 'Projects' },
+  { key: 'blog', href: '/blog', label: 'Blog' },
+  { key: 'resume', href: '/resume', label: 'Resume' },
+  { key: 'services', href: '/services', label: 'Services', cta: true },
+].filter((l) => SITE.pages[l.key as keyof typeof SITE.pages]);
 const { pathname } = Astro.url;
 ---
 

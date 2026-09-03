@@ -3,6 +3,9 @@ import { getCollection, getEntry, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { SITE } from '../site.config';
 
+// Page flag — see site.config.ts. A 404 response means no file is built.
+if (!SITE.pages.resume) return new Response(null, { status: 404 });
+
 // All resume content is Markdown:
 //   jobs      -> src/content/resume/experience/*.md  (body = bullet list)
 //   education -> src/content/resume/education/*.md

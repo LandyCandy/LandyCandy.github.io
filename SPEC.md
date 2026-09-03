@@ -83,7 +83,10 @@ Global footer on every page: LinkedIn, contact link, copyright.
 - **Global site config:** a single `src/site.config.ts` holds name, title,
   domain, LinkedIn URL, and any future social links. Every component reads from
   it — set the LinkedIn URL once there and it appears in the footer, contact
-  page, and structured data. Ships with a placeholder until Richard provides it.
+  page, and structured data. The same file holds per-page launch flags
+  (`pages`): a page set to `false` leaves the nav, homepage, and sitemap and
+  its URL returns the 404 page, so unfinished sections (Blog, Services) stay
+  offline until their content is real.
 - **Repo:** Git repository (to be initialized), hosted on GitHub. GitHub
   Actions is the CI/CD; in the repo settings, Pages → Source must be set to
   "GitHub Actions" rather than a branch.
@@ -216,7 +219,7 @@ works**, not through disclosing whose line the camera was pointed at.
    §5a confidentiality playbook during drafting.
 2. **Headshot** — keep the existing one or reshoot before VISION 2026 (swap is
    a one-file change either way).
-3. **LinkedIn URL** — pending from Richard; lives in the global site config.
+3. ~~LinkedIn URL~~ — resolved 2026-09-03; set in the global site config.
 
 *Resolved 2026-08-16: registrar (AWS/Route 53), services positioning
 (independent, on the side), analytics (none — Search Console only), contact

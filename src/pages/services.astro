@@ -1,6 +1,10 @@
 ---
 import { getCollection, getEntry, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import { SITE } from '../site.config';
+
+// Page flag — see site.config.ts. A 404 response means no file is built.
+if (!SITE.pages.services) return new Response(null, { status: 404 });
 
 // Offerings: src/content/services/*.md (body = description).
 // Page copy:  src/content/copy/services.md
