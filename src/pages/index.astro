@@ -1,0 +1,148 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { SITE } from '../site.config';
+
+const home = (await getEntry('copy', 'home'))!.data;
+
+const projects = (await getCollection('projects', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 4);
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const kicker = home.kicker ?? [];
+const kickerHead = kicker.slice(0, -1).join(' · ');
+const kickerTail = kicker.at(-1);
+---
+
+<Base>
+  <!-- Hero -->
+  <section class="relative overflow-hidden border-b border-line">
+    <div class="scan absolute top-[38%] right-0 left-0 h-px"></div>
+    <div
+      class="mx-auto grid w-full max-w-[1120px] items-center gap-16 px-8 py-18 lg:grid-cols-[1fr_360px]"
+    >
+      <div>
+        <div class="ro mb-5">// {kickerHead} · <span class="acc">{kickerTail}</span></div>
+        <h1
+          class="mb-5 font-display text-5xl leading-[1.05] font-bold tracking-[-0.02em] md:text-[64px]"
+        >
+          {SITE.name}
+        </h1>
+        <p class="mb-3.5 font-display text-[22px] leading-snug font-medium text-hi">
+          {home.tagline}
+        </p>
+        <p class="mb-8 max-w-[520px] text-mid">
+          {home.intro}
+        </p>
+        <div class="flex items-center gap-3.5">
+          <a class="btn btn-primary" href="/services">Work with me</a>
+          <a class="btn btn-ghost" href="/projects">View projects</a>
+        </div>
+      </div>
+      <div class="relative hidden h-[380px] w-[320px] justify-self-end lg:block">
+        <span class="absolute -top-9 -left-2 font-mono text-[11px] tracking-[0.1em] text-accent">
+          PERSON · 0.998
+        </span>
+        <div class="headshot-frame absolute inset-0 flex items-center justify-center rounded border border-line">
+          <!-- TODO: replace with <Image> of the real headshot -->
+          <div class="ro text-center leading-8">[ HEADSHOT ]<br />320 × 380</div>
+        </div>
+        <span class="corner corner-tl"></span>
+        <span class="corner corner-tr"></span>
+        <span class="corner corner-bl"></span>
+        <span class="corner corner-br"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured projects -->
+  <section class="mx-auto w-full max-w-[1120px] px-8 py-24">
+    <div class="mb-3 flex items-baseline justify-between">
+      <div>
+        <div class="ro mb-3">// selected work</div>
+        <h2 class="font-display text-[40px] leading-tight font-bold tracking-[-0.01em]">Projects</h2>
+      </div>
+      <a class="link-mono" href="/projects">all projects →</a>
+    </div>
+    {
+      projects.length > 0 ? (
+        <div class="mt-8 grid gap-6 md:grid-cols-2">
+          {projects.map((p, i) => (
+            <ProjectCard project={p} index={i} />
+          ))}
+        </div>
+      ) : (
+        <p class="ro mt-8">no public writeups yet · check back soon</p>
+      )
+    }
+  </section>
+
+  <!-- Latest writing -->
+  <section class="border-t border-line">
+    <div class="mx-auto w-full max-w-[1120px] px-8 py-24">
+      <div class="mb-3 flex items-baseline justify-between">
+        <div>
+          <div class="ro mb-3">// field notes</div>
+          <h2 class="font-display text-[40px] leading-tight font-bold tracking-[-0.01em]">Writing</h2>
+        </div>
+        <a class="link-mono" href="/blog">all posts →</a>
+      </div>
+      {
+        posts.length > 0 ? (
+          <div class="mt-8 divide-y divide-line-soft">
+            {posts.map((post) => (
+              <a
+                href={`/blog/${post.id}`}
+                class="group flex flex-wrap items-baseline gap-x-8 gap-y-1 py-5 no-underline"
+              >
+                <span class="ro w-28 shrink-0">
+                  {post.data.date.toISOString().slice(0, 10)}
+                </span>
+                <span class="font-display text-xl font-semibold text-hi group-hover:text-accent">
+                  {post.data.title}
+                </span>
+                <span class="w-full pl-0 text-sm text-mid sm:w-auto sm:flex-1">
+                  {post.data.summary}
+                </span>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <p class="ro mt-8">field notes on machine vision · first posts landing before vision 2026</p>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- Services CTA -->
+  <section class="border-t border-line">
+    <div class="mx-auto w-full max-w-[1120px] px-8 py-24 text-center">
+      <div class="ro mb-4">// available for independent engagements</div>
+      <h2 class="mx-auto mb-6 max-w-[640px] font-display text-[32px] leading-tight font-bold">
+        {home.ctaHeading}
+      </h2>
+      <a class="btn btn-primary" href="/contact">Get in touch</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .scan {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent-glow) 30%,
+      rgba(164, 142, 217, 0.35) 50%,
+      var(--accent-glow) 70%,
+      transparent
+    );
+  }
+  .headshot-frame {
+    background: linear-gradient(165deg, #1a2027 0%, #10141a 100%);
+  }
+</style>

@@ -1,0 +1,95 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site.config';
+
+// All resume content is Markdown:
+//   jobs      -> src/content/resume/experience/*.md  (body = bullet list)
+//   education -> src/content/resume/education/*.md
+//   skills    -> src/content/copy/resume.md frontmatter
+// No phone, email, or postal address on this page or in the PDF — ever (see SPEC §6).
+const jobs = await Promise.all(
+  (await getCollection('experience'))
+    .sort((a, b) => a.data.order - b.data.order)
+    .map(async (job) => ({ ...job.data, Content: (await render(job)).Content }))
+);
+
+const education = (await getCollection('education')).sort((a, b) => a.data.order - b.data.order);
+
+const resumeCopy = (await getEntry('copy', 'resume'))?.data;
+const skillGroups =
+  resumeCopy?.skillGroups ??
+  (resumeCopy?.skills ? [{ label: 'skills', items: resumeCopy.skills }] : []);
+---
+
+<Base title="Resume" description={`Resume of ${SITE.name} — ${SITE.role}.`}>
+  <section class="print-ink mx-auto w-full max-w-[820px] px-8 py-18">
+    <div class="mb-3 flex flex-wrap items-baseline justify-between gap-4">
+      <div>
+        <div class="ro no-print mb-3">// resume</div>
+        <h1 class="font-display text-[40px] leading-tight font-bold tracking-[-0.01em]">
+          {SITE.name}
+        </h1>
+        <p class="mt-1 text-mid">{SITE.role}</p>
+      </div>
+      {
+        SITE.resumePdf && (
+          <a class="btn btn-ghost no-print" href={SITE.resumePdf} download>
+            Download PDF
+          </a>
+        )
+      }
+    </div>
+
+    <h2 class="mt-12 mb-6 border-b border-line pb-2 font-display text-2xl font-semibold">
+      Experience
+    </h2>
+    {
+      jobs.map((job) => (
+        <div class="mb-8">
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="font-display text-lg font-semibold text-hi">
+              {job.role} · <span class="text-mid">{job.company}</span>
+            </h3>
+            <span class="ro">{job.period}</span>
+          </div>
+          <div class="prose mt-3 text-sm">
+            <job.Content />
+          </div>
+        </div>
+      ))
+    }
+
+    <h2 class="mt-12 mb-6 border-b border-line pb-2 font-display text-2xl font-semibold">Skills</h2>
+    {
+      skillGroups.map((group) => (
+        <div class="mb-5">
+          <div class="ro mb-2.5">// {group.label}</div>
+          <div class="flex flex-wrap gap-2.5">
+            {group.items.map((s) => (
+              <span class="chip">{s}</span>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+
+    <h2 class="mt-12 mb-6 border-b border-line pb-2 font-display text-2xl font-semibold">
+      Education
+    </h2>
+    {
+      education.map((e) => (
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <p class="text-sm text-mid">
+            <span class="font-semibold text-hi">{e.data.degree}</span> · {e.data.institution}
+          </p>
+          <span class="ro">{e.data.year}</span>
+        </div>
+      ))
+    }
+
+    <p class="ro no-print mt-14">
+      contact via the <a href="/contact" class="text-accent">form</a> — no email or phone published
+    </p>
+  </section>
+</Base>

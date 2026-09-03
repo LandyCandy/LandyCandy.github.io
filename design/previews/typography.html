@@ -1,0 +1,50 @@
+<!-- @dsCard group="Type" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Type Scale — Inspection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg-0:#1A1D21;--bg-1:#22262B;--line:#3A4046;
+    --text-hi:#E8EBEE;--text-mid:#A3ACB5;--text-low:#6E7883;
+    --accent:#A48ED9;
+    --font-display:'Space Grotesk',Inter,system-ui,sans-serif;
+    --font-body:Inter,system-ui,sans-serif;
+    --font-mono:'JetBrains Mono','Cascadia Code',Consolas,monospace;
+  }
+  body{background:var(--bg-0);color:var(--text-hi);font-family:var(--font-body);padding:40px;max-width:960px}
+  .ro{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-low)}
+  .ro .acc{color:var(--accent)}
+  .spec{display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:baseline;padding:28px 0;border-bottom:1px solid var(--line)}
+  .spec:last-of-type{border-bottom:none}
+  .label{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--text-low);line-height:1.8;text-transform:uppercase}
+  .dxl{font-family:var(--font-display);font-weight:700;font-size:64px;line-height:1.05;letter-spacing:-.02em}
+  .dl{font-family:var(--font-display);font-weight:700;font-size:40px;line-height:1.1;letter-spacing:-.01em}
+  .h3{font-family:var(--font-display);font-weight:600;font-size:28px;line-height:1.2}
+  .body{font-size:16px;line-height:1.65;color:var(--text-mid)}
+  .small{font-size:14px;line-height:1.5;color:var(--text-mid)}
+  .readout{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-low)}
+  .readout .acc{color:var(--accent)}
+  h1{font-family:var(--font-display);font-weight:700;font-size:28px;margin:10px 0 8px}
+</style>
+</head>
+<body>
+  <div class="ro">// type · <span class="acc">space grotesk · inter · jetbrains mono</span></div>
+  <h1>Type scale</h1>
+
+  <div class="spec"><div class="label">display xl<br>64 / 1.05 · −0.02em<br>space grotesk 700</div><div class="dxl">Vision systems that ship.</div></div>
+  <div class="spec"><div class="label">display l<br>40 / 1.1 · −0.01em<br>space grotesk 700</div><div class="dl">Lab performance is not line performance.</div></div>
+  <div class="spec"><div class="label">heading<br>28 / 1.2<br>space grotesk 600</div><div class="h3">Thoughtful software architecture enables continuous improvement on the line.</div></div>
+  <div class="spec"><div class="label">body<br>16 / 1.65<br>inter 400</div><div class="body">Optical inspection lives or dies on the gap between lab performance and line performance. I've spent my career closing that gap — lighting, optics, models, and the software that holds it all together at production speed.</div></div>
+  <div class="spec"><div class="label">small<br>14 / 1.5<br>inter 400</div><div class="small">Field notes on machine vision for advanced manufacturing.</div></div>
+  <div class="spec"><div class="label">readout<br>11 / 1.4 · +0.14em<br>jetbrains mono 500</div><div class="readout">// defect detection · dark-field · <span class="acc">pass</span> · frame 0042</div></div>
+
+  <div class="ro" style="margin-top:24px">rule: mono is a seasoning, not a base — readouts only, never running text</div>
+</body>
+</html>

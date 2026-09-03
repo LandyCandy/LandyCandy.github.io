@@ -1,0 +1,100 @@
+<!-- @dsCard group="Hero" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homepage Hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg-0:#1A1D21;--bg-1:#22262B;--bg-2:#2C3137;
+    --line:#3A4046;
+    --text-hi:#E8EBEE;--text-mid:#A3ACB5;--text-low:#6E7883;
+    --pass:#6BC495;
+    --accent:#A48ED9;--accent-ink:#1C1330;--accent-glow:rgba(164,142,217,.16);
+    --font-display:'Space Grotesk',Inter,system-ui,sans-serif;
+    --font-body:Inter,system-ui,sans-serif;
+    --font-mono:'JetBrains Mono','Cascadia Code',Consolas,monospace;
+  }
+  body{background:var(--bg-0);color:var(--text-hi);font-family:var(--font-body);min-height:100vh;display:flex;flex-direction:column}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 32px}
+
+  nav{border-bottom:1px solid var(--line)}
+  .navin{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;color:var(--text-hi);text-decoration:none}
+  .brand b{color:var(--accent);font-weight:500}
+  .links{display:flex;gap:28px}
+  .links a{font-family:var(--font-display);font-weight:500;font-size:14px;color:var(--text-mid);text-decoration:none}
+  .links a:hover{color:var(--text-hi)}
+  .links a.cta{color:var(--accent)}
+
+  .hero{flex:1;display:flex;align-items:center;position:relative;overflow:hidden}
+  .scan{position:absolute;left:0;right:0;top:38%;height:1px;background:linear-gradient(90deg,transparent,var(--accent-glow) 30%,rgba(164,142,217,.35) 50%,var(--accent-glow) 70%,transparent)}
+  .heroin{display:grid;grid-template-columns:1fr 360px;gap:64px;align-items:center;padding:72px 32px}
+
+  .kicker{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-low);margin-bottom:20px}
+  .kicker .acc{color:var(--accent)}
+  h1{font-family:var(--font-display);font-weight:700;font-size:64px;line-height:1.05;letter-spacing:-.02em;margin-bottom:20px}
+  .tag{font-family:var(--font-display);font-weight:500;font-size:22px;line-height:1.35;color:var(--text-hi);margin-bottom:14px}
+  .sub{font-size:16px;line-height:1.65;color:var(--text-mid);max-width:520px;margin-bottom:32px}
+  .btns{display:flex;gap:14px;align-items:center}
+  .btn{display:inline-block;font-family:var(--font-display);font-weight:600;font-size:15px;padding:13px 26px;border-radius:2px;text-decoration:none;border:1px solid transparent;transition:box-shadow .15s,border-color .15s}
+  .btn-primary{background:var(--accent);color:var(--accent-ink)}
+  .btn-primary:hover{box-shadow:0 0 0 4px var(--accent-glow)}
+  .btn-ghost{color:var(--text-hi);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--accent)}
+
+  .shot{position:relative;width:320px;height:380px;justify-self:end}
+  .frame{position:absolute;inset:0;background:linear-gradient(165deg,#1A2027 0%,#10141A 100%);border:1px solid var(--line);border-radius:4px;display:flex;align-items:center;justify-content:center}
+  .frame .ph{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--text-low);text-align:center;line-height:2}
+  .corner{position:absolute;width:22px;height:22px;border:2px solid var(--accent)}
+  .c1{top:-8px;left:-8px;border-right:none;border-bottom:none}
+  .c2{top:-8px;right:-8px;border-left:none;border-bottom:none}
+  .c3{bottom:-8px;left:-8px;border-right:none;border-top:none}
+  .c4{bottom:-8px;right:-8px;border-left:none;border-top:none}
+  .dlabel{position:absolute;top:-36px;left:-8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--accent)}
+
+  footer{border-top:1px solid var(--line)}
+  .footin{display:flex;justify-content:space-between;align-items:center;height:52px;font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-low)}
+  .footin .ok{color:var(--pass)}
+</style>
+</head>
+<body>
+  <nav><div class="wrap navin">
+    <a class="brand" href="#"><b>▸</b> richardlandy.me</a>
+    <div class="links">
+      <a href="#">Projects</a><a href="#">Blog</a><a href="#">Resume</a><a href="#" class="cta">Services</a>
+    </div>
+  </div></nav>
+
+  <div class="hero">
+    <div class="scan"></div>
+    <div class="wrap heroin">
+      <div>
+        <div class="kicker">// machine vision · optical inspection · <span class="acc">edge deployment</span></div>
+        <h1>Richard Landy</h1>
+        <div class="tag">I build vision systems that catch what humans can't.</div>
+        <div class="sub">Head of Software at BrightSpot Automation. Computer vision and optical inspection for advanced manufacturing — from optics and lighting to models running at line rate.</div>
+        <div class="btns">
+          <a class="btn btn-primary" href="#">Work with me</a>
+          <a class="btn btn-ghost" href="#">View projects</a>
+        </div>
+      </div>
+      <div class="shot">
+        <span class="dlabel">PERSON · 0.998</span>
+        <div class="frame"><div class="ph">[ HEADSHOT ]<br>320 × 380</div></div>
+        <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+      </div>
+    </div>
+  </div>
+
+  <footer><div class="wrap footin">
+    <span>sys.status: <span class="ok">operational</span></span>
+    <span>40.00518° N · 105.16161° W</span>
+  </div></footer>
+</body>
+</html>

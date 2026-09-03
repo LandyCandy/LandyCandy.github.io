@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+const { title, year, kind, detection, challenge, approach } = project.data;
+const num = String(index + 1).padStart(2, '0');
+---
+
+<a
+  href={`/projects/${project.id}`}
+  class="group block overflow-hidden rounded border border-line bg-surface no-underline transition-colors hover:border-accent"
+>
+  <div class="thumb relative h-[200px]">
+    <div class="bbox absolute top-11 left-1/2 h-24 w-30 -translate-x-1/2">
+      <i class="corner corner-tl !h-3.5 !w-3.5 !border-2"></i>
+      <i class="corner corner-tr !h-3.5 !w-3.5 !border-2"></i>
+      <i class="corner corner-bl !h-3.5 !w-3.5 !border-2"></i>
+      <i class="corner corner-br !h-3.5 !w-3.5 !border-2"></i>
+      <span
+        class="absolute -top-6 left-0 font-mono text-[10px] tracking-[0.1em] whitespace-nowrap text-accent"
+      >
+        {detection}
+      </span>
+    </div>
+  </div>
+  <div class="p-5 pt-5">
+    <div class="mb-2.5 font-mono text-[10px] tracking-[0.12em] text-low uppercase">
+      // project {num} · {year} · {kind} · confidential-safe
+    </div>
+    <h3 class="font-display text-xl leading-tight font-semibold text-hi">{title}</h3>
+    <div class="mt-4 grid grid-cols-1 gap-6 border-t border-line pt-4 sm:grid-cols-2">
+      <div>
+        <div class="mb-1.5 font-mono text-[9px] font-medium tracking-[0.14em] text-accent uppercase">
+          Challenge
+        </div>
+        <p class="text-[13px] leading-relaxed text-mid">{challenge}</p>
+      </div>
+      <div>
+        <div class="mb-1.5 font-mono text-[9px] font-medium tracking-[0.14em] text-accent uppercase">
+          Approach
+        </div>
+        <p class="text-[13px] leading-relaxed text-mid">{approach}</p>
+      </div>
+    </div>
+  </div>
+</a>
+
+<style>
+  .thumb {
+    background:
+      radial-gradient(120px 80px at 68% 42%, rgba(164, 142, 217, 0.1), transparent 70%),
+      linear-gradient(160deg, #262a31 0%, #191c21 100%);
+  }
+  .thumb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 39px, rgba(58, 64, 70, 0.5) 39px 40px),
+      repeating-linear-gradient(90deg, transparent 0 39px, rgba(58, 64, 70, 0.5) 39px 40px);
+  }
+</style>

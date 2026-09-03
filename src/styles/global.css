@@ -1,0 +1,198 @@
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/space-grotesk/500.css';
+@import '@fontsource/space-grotesk/600.css';
+@import '@fontsource/space-grotesk/700.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+@import 'tailwindcss';
+
+/* "Inspection" theme tokens — source of truth: design/tokens.json */
+@theme {
+  --color-base: #1a1d21;
+  --color-surface: #22262b;
+  --color-raised: #2c3137;
+  --color-line: #3a4046;
+  --color-line-soft: #2e3339;
+  --color-hi: #e8ebee;
+  --color-mid: #a3acb5;
+  --color-low: #6e7883;
+  --color-pass: #6bc495;
+  --color-fail: #d9636f;
+  --color-accent: #a48ed9;
+  --color-accent-ink: #1c1330;
+
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;
+}
+
+:root {
+  --accent-glow: rgba(164, 142, 217, 0.16);
+}
+
+body {
+  background: var(--color-base);
+  color: var(--color-hi);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* ---- Recurring "Inspection" components ---- */
+
+/* Mono readout label */
+.ro {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-low);
+}
+.ro .acc {
+  color: var(--color-accent);
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  padding: 13px 26px;
+  border-radius: 2px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition:
+    box-shadow 0.15s,
+    border-color 0.15s;
+}
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+.btn-primary:hover {
+  box-shadow: 0 0 0 4px var(--accent-glow);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--color-hi);
+  border-color: var(--color-line);
+}
+.btn-ghost:hover {
+  border-color: var(--color-accent);
+}
+
+.link-mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.link-mono:hover {
+  text-decoration: underline;
+}
+
+.chip {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-mid);
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  border-radius: 2px;
+  padding: 6px 10px;
+}
+
+/* Bounding-box corner brackets (absolute children of a relative parent) */
+.corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--color-accent);
+}
+.corner-tl { top: -8px; left: -8px; border-right: none; border-bottom: none; }
+.corner-tr { top: -8px; right: -8px; border-left: none; border-bottom: none; }
+.corner-bl { bottom: -8px; left: -8px; border-right: none; border-top: none; }
+.corner-br { bottom: -8px; right: -8px; border-left: none; border-top: none; }
+
+/* ---- Long-form article styling (blog posts, project writeups) ---- */
+.prose {
+  color: var(--color-mid);
+  max-width: 68ch;
+}
+.prose h2,
+.prose h3 {
+  font-family: var(--font-display);
+  color: var(--color-hi);
+  margin: 2.2em 0 0.6em;
+  line-height: 1.2;
+}
+.prose h2 { font-size: 28px; font-weight: 600; }
+.prose h3 { font-size: 20px; font-weight: 600; }
+.prose p { margin-bottom: 1.2em; }
+.prose a { color: var(--color-accent); }
+.prose ul,
+.prose ol { margin: 0 0 1.2em 1.4em; }
+.prose li { margin-bottom: 0.4em; }
+.prose strong { color: var(--color-hi); font-weight: 600; }
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-soft);
+  border-radius: 2px;
+  padding: 0.1em 0.35em;
+}
+.prose pre {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  padding: 16px 20px;
+  overflow-x: auto;
+  margin-bottom: 1.2em;
+}
+.prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+.prose img {
+  max-width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+}
+.prose blockquote {
+  border-left: 2px solid var(--color-accent);
+  padding-left: 1em;
+  color: var(--color-mid);
+  margin-bottom: 1.2em;
+}
+
+/* ---- Print: the resume page doubles as the PDF source ---- */
+@media print {
+  body {
+    background: #fff;
+    color: #111;
+  }
+  nav,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  .prose,
+  .print-ink,
+  .print-ink * {
+    color: #111 !important;
+  }
+  a {
+    text-decoration: none;
+    color: #111;
+  }
+}

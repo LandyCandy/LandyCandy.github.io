@@ -1,0 +1,22 @@
+---
+import { SITE } from '../site.config';
+---
+
+<footer class="border-t border-line">
+  <div
+    class="mx-auto flex h-13 w-full max-w-[1120px] flex-wrap items-center justify-between gap-x-6 px-8 font-mono text-[10px] tracking-[0.12em] text-low uppercase"
+  >
+    <span>sys.status: <span class="text-pass">operational</span></span>
+    <span class="flex items-center gap-5">
+      {
+        SITE.linkedin && (
+          <a href={SITE.linkedin} rel="me noopener" class="text-low no-underline hover:text-accent">
+            LinkedIn
+          </a>
+        )
+      }
+      <a href="/contact" class="text-low no-underline hover:text-accent">Contact</a>
+    </span>
+    <span>{SITE.coordinates}</span>
+  </div>
+</footer>

@@ -1,0 +1,108 @@
+<!-- @dsCard group="Components" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Components</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg-0:#1A1D21;--bg-1:#22262B;--bg-2:#2C3137;
+    --line:#3A4046;
+    --text-hi:#E8EBEE;--text-mid:#A3ACB5;--text-low:#6E7883;
+    --pass:#6BC495;--fail:#D9636F;
+    --accent:#A48ED9;--accent-ink:#1C1330;--accent-glow:rgba(164,142,217,.16);
+    --font-display:'Space Grotesk',Inter,system-ui,sans-serif;
+    --font-body:Inter,system-ui,sans-serif;
+    --font-mono:'JetBrains Mono','Cascadia Code',Consolas,monospace;
+  }
+  body{background:var(--bg-0);color:var(--text-hi);font-family:var(--font-body);padding:40px;max-width:960px}
+  .ro{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text-low)}
+  .ro .acc{color:var(--accent)}
+  h1{font-family:var(--font-display);font-weight:700;font-size:28px;margin:10px 0 32px}
+  .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:40px}
+  .sect{margin-bottom:8px}
+
+  .btn{display:inline-block;font-family:var(--font-display);font-weight:600;font-size:15px;letter-spacing:.01em;padding:13px 26px;border-radius:2px;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:box-shadow .15s,border-color .15s}
+  .btn-primary{background:var(--accent);color:var(--accent-ink)}
+  .btn-primary:hover{box-shadow:0 0 0 4px var(--accent-glow)}
+  .btn-ghost{background:transparent;color:var(--text-hi);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--accent)}
+  .link-mono{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;color:var(--accent);text-decoration:none}
+  .link-mono:hover{text-decoration:underline}
+
+  .chipset{display:flex;gap:10px;flex-wrap:wrap}
+  .chip{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-mid);border:1px solid var(--line);background:var(--bg-1);border-radius:2px;padding:6px 10px}
+
+  .card{width:420px;background:var(--bg-1);border:1px solid var(--line);border-radius:4px;overflow:hidden;transition:border-color .15s}
+  .card:hover{border-color:var(--accent)}
+  .thumb{position:relative;height:200px;background:
+    radial-gradient(120px 80px at 68% 42%,rgba(164,142,217,.10),transparent 70%),
+    linear-gradient(160deg,#262A31 0%,#191C21 100%)}
+  .thumb .grid-lines{position:absolute;inset:0;background:
+    repeating-linear-gradient(0deg,transparent 0 39px,rgba(58,64,70,.5) 39px 40px),
+    repeating-linear-gradient(90deg,transparent 0 39px,rgba(58,64,70,.5) 39px 40px)}
+  .bbox{position:absolute;top:44px;left:200px;width:120px;height:96px}
+  .bbox i{position:absolute;width:14px;height:14px;border:2px solid var(--accent)}
+  .bbox i:nth-child(1){top:0;left:0;border-right:none;border-bottom:none}
+  .bbox i:nth-child(2){top:0;right:0;border-left:none;border-bottom:none}
+  .bbox i:nth-child(3){bottom:0;left:0;border-right:none;border-top:none}
+  .bbox i:nth-child(4){bottom:0;right:0;border-left:none;border-top:none}
+  .bbox .tag{position:absolute;top:-24px;left:0;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;color:var(--accent);white-space:nowrap}
+  .cbody{padding:20px 22px 22px}
+  .cbody .meta{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-low);margin-bottom:10px}
+  .cbody h3{font-family:var(--font-display);font-weight:600;font-size:20px;line-height:1.25;margin-bottom:8px}
+  .cbody p{font-size:14px;line-height:1.6;color:var(--text-mid);margin-bottom:0}
+  .cs{display:grid;grid-template-columns:1fr 1fr;gap:24px;border-top:1px solid var(--line);margin-top:16px;padding-top:16px}
+  .cs .k{font-family:var(--font-mono);font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .cs p{font-size:13px;line-height:1.6;color:var(--text-mid)}
+</style>
+</head>
+<body>
+  <div class="ro">// components</div>
+  <h1>Buttons, chips, project card</h1>
+
+  <div class="ro sect">buttons</div>
+  <div class="row">
+    <a class="btn btn-primary" href="#">Work with me</a>
+    <a class="btn btn-ghost" href="#">View projects</a>
+    <a class="link-mono" href="#">read the writeup →</a>
+  </div>
+
+  <div class="ro sect">tag chips</div>
+  <div class="row chipset">
+    <span class="chip">Defect detection</span>
+    <span class="chip">NIR imaging</span>
+    <span class="chip">Optical metrology</span>
+    <span class="chip">System architecture</span>
+    <span class="chip">Optics &amp; lighting</span>
+    <span class="chip">Edge deployment</span>
+  </div>
+
+  <div class="ro sect">project card</div>
+  <div class="card">
+    <div class="thumb">
+      <div class="grid-lines"></div>
+      <div class="bbox"><i></i><i></i><i></i><i></i><span class="tag">DEFECT · 0.987</span></div>
+    </div>
+    <div class="cbody">
+      <div class="meta">// project 04 · 2026 · R&amp;D · confidential-safe</div>
+      <h3>In-line NIR inspection for a first-of-its-kind coating process</h3>
+      <div class="cs">
+        <div>
+          <div class="k">Challenge</div>
+          <p>A brand-new process with no inspection precedent: the defects of interest were invisible under visible light, and nobody could yet say what "good" looked like.</p>
+        </div>
+        <div>
+          <div class="k">Approach</div>
+          <p>Built an NIR imaging rig to make the failure mode visible, then an architecture that let the team relabel, retrain, and redeploy on the line without touching the machine control code.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

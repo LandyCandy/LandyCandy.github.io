@@ -1,0 +1,57 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects', ({ data }) => !data.draft);
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { title, year, kind, tags, challenge, approach } = project.data;
+const { Content } = await render(project);
+---
+
+<Base title={title} description={challenge}>
+  <article class="mx-auto w-full max-w-[820px] px-8 py-18">
+    <div class="ro mb-3">// {year} · {kind} · confidential-safe</div>
+    <h1 class="mb-6 font-display text-[40px] leading-tight font-bold tracking-[-0.01em]">
+      {title}
+    </h1>
+    {
+      tags.length > 0 && (
+        <div class="mb-10 flex flex-wrap gap-2.5">
+          {tags.map((t) => (
+            <span class="chip">{t}</span>
+          ))}
+        </div>
+      )
+    }
+
+    <div class="mb-12 grid gap-8 rounded border border-line bg-surface p-6 sm:grid-cols-2">
+      <div>
+        <div class="mb-2 font-mono text-[10px] font-medium tracking-[0.14em] text-accent uppercase">
+          Challenge
+        </div>
+        <p class="text-sm leading-relaxed text-mid">{challenge}</p>
+      </div>
+      <div>
+        <div class="mb-2 font-mono text-[10px] font-medium tracking-[0.14em] text-accent uppercase">
+          Approach
+        </div>
+        <p class="text-sm leading-relaxed text-mid">{approach}</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <div class="mt-14 border-t border-line pt-8">
+      <a class="link-mono" href="/projects">← all projects</a>
+    </div>
+  </article>
+</Base>

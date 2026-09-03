@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Base title="Blog" description="Field notes on machine vision, optical inspection, and synthetic data for advanced manufacturing.">
+  <section class="mx-auto w-full max-w-[820px] px-8 py-18">
+    <div class="ro mb-3">// field notes</div>
+    <h1 class="mb-12 font-display text-[40px] leading-tight font-bold tracking-[-0.01em]">Writing</h1>
+    {
+      posts.length > 0 ? (
+        <div class="divide-y divide-line-soft">
+          {posts.map((post) => (
+            <a href={`/blog/${post.id}`} class="group block py-6 no-underline">
+              <div class="ro mb-2">{post.data.date.toISOString().slice(0, 10)}</div>
+              <h2 class="mb-1.5 font-display text-2xl font-semibold text-hi group-hover:text-accent">
+                {post.data.title}
+              </h2>
+              <p class="text-sm text-mid">{post.data.summary}</p>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <p class="ro">first posts landing before vision 2026</p>
+      )
+    }
+  </section>
+</Base>

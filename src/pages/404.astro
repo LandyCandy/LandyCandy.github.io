@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Not found">
+  <section class="mx-auto flex w-full max-w-[1120px] flex-col items-center px-8 py-32 text-center">
+    <div class="relative mb-10 px-10 py-8">
+      <span class="corner corner-tl"></span>
+      <span class="corner corner-tr"></span>
+      <span class="corner corner-bl"></span>
+      <span class="corner corner-br"></span>
+      <div class="font-display text-[64px] leading-none font-bold tracking-[-0.02em]">404</div>
+    </div>
+    <div class="ro mb-6">frame not found · <span class="text-fail">no detection · 0.000</span></div>
+    <a class="btn btn-ghost" href="/">Back to home</a>
+  </section>
+</Base>
