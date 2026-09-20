@@ -1,0 +1,225 @@
+---
+/**
+ * PRINTED URL — https://richardlandy.me/card is the QR target on physical
+ * business cards. Do not rename, remove, or gate this page (no launch flag,
+ * no redirect elsewhere, no query-string dependence). The same goes for
+ * /richard-landy.vcf, which it links to.
+ *
+ * Built for a phone on bad conference Wi-Fi, so it is deliberately standalone:
+ * no Base layout (the shared stylesheet and web fonts are a blocking download,
+ * and the nav/footer would add links), all CSS inline, system fonts, no JS.
+ * Card fields live in src/data/card.ts.
+ */
+import { getEntry } from 'astro:content';
+import { SITE } from '../site.config';
+import { CARD } from '../data/card';
+
+const home = (await getEntry('copy', 'home'))!.data;
+
+const pageTitle = `${SITE.name} — ${SITE.role}`;
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const ogImage = new URL('/og.png', SITE.url).href;
+const domain = new URL(SITE.url).host;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={SITE.description} />
+    <!-- For people holding the card, not search. Also excluded from the sitemap in astro.config.mjs. -->
+    <meta name="robots" content="noindex" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#1a1d21" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={SITE.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style is:inline>
+      /* "Inspection" tokens from design/DESIGN.md (same values as global.css).
+         Text uses hi/mid only — text-low is under 4.5:1 on the page background. */
+      :root {
+        color-scheme: dark;
+        --base: #1a1d21;
+        --surface: #22262b;
+        --line: #3a4046;
+        --hi: #e8ebee;
+        --mid: #a3acb5;
+        --accent: #a48ed9;
+        --accent-ink: #1c1330;
+        --accent-glow: rgba(164, 142, 217, 0.16);
+        /* The site's faces are used when installed locally; nothing is downloaded. */
+        --display: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        --body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Code', 'Roboto Mono', Menlo, Consolas, monospace;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        min-height: 100svh;
+        padding: 40px 24px;
+        background: var(--base);
+        color: var(--hi);
+        font-family: var(--body);
+        font-size: 16px;
+        line-height: 1.65;
+      }
+      main {
+        width: 100%;
+        max-width: 420px;
+      }
+      .id {
+        position: relative;
+        margin-bottom: 40px;
+        padding: 18px 16px 20px;
+      }
+      h1 {
+        margin-bottom: 10px;
+        font-family: var(--display);
+        font-size: clamp(34px, 10.5vw, 44px);
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+      }
+      /* "Title · Org" on one line where it fits. On most phones the org wraps to
+         its own line; the separator then sits left of the box and is clipped. */
+      .role {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 22px;
+        overflow: hidden;
+        margin-bottom: 12px;
+        font-family: var(--display);
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      .role span {
+        position: relative;
+        white-space: nowrap;
+      }
+      .role span + span::before {
+        content: '·';
+        position: absolute;
+        left: -14px;
+        color: var(--accent);
+      }
+      .desc {
+        color: var(--mid);
+      }
+      /* Bounding-box brackets — top-left + bottom-right, per the card motif. */
+      .corner {
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        border: 2px solid var(--accent);
+      }
+      .corner-tl {
+        top: -8px;
+        left: -8px;
+        border-right: none;
+        border-bottom: none;
+      }
+      .corner-br {
+        right: -8px;
+        bottom: -8px;
+        border-top: none;
+        border-left: none;
+      }
+      .actions {
+        display: grid;
+        gap: 12px;
+      }
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 56px;
+        padding: 12px 20px;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        font-family: var(--display);
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: 0.01em;
+        text-decoration: none;
+        transition:
+          box-shadow 0.15s,
+          border-color 0.15s;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: var(--accent-ink);
+      }
+      .btn-ghost {
+        background: var(--surface);
+        color: var(--hi);
+        border-color: var(--line);
+      }
+      /* Echoes the nav brand mark. */
+      .btn-site {
+        font-family: var(--mono);
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+      }
+      .btn-site .mark {
+        color: var(--accent);
+      }
+      @media (hover: hover) {
+        .btn-primary:hover {
+          box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+        .btn-ghost:hover {
+          border-color: var(--accent);
+        }
+      }
+      .btn:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="id">
+        <span class="corner corner-tl" aria-hidden="true"></span>
+        <span class="corner corner-br" aria-hidden="true"></span>
+        <h1>{CARD.fullName}</h1>
+        <p class="role"><span>{CARD.title}</span> <span>{CARD.org}</span></p>
+        <p class="desc">{home.tagline}</p>
+      </div>
+      <nav class="actions" aria-label="Contact actions">
+        <!-- Plain link, no download attribute: that would suppress the iOS "add contact" sheet. -->
+        <a class="btn btn-primary" href="/richard-landy.vcf">Save contact</a>
+        {
+          CARD.urls.linkedin && (
+            <a class="btn btn-ghost" href={CARD.urls.linkedin} rel="me noopener">
+              LinkedIn
+            </a>
+          )
+        }
+        <a class="btn btn-ghost btn-site" href="/">
+          <span class="mark" aria-hidden="true">▸</span>{domain}
+        </a>
+      </nav>
+    </main>
+  </body>
+</html>

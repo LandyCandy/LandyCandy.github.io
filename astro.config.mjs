@@ -10,11 +10,15 @@ const offline = Object.entries(SITE.pages)
   .filter(([, on]) => !on)
   .map(([key]) => `/${key}/`);
 
+// /card is the business-card QR landing page: live and noindex, but kept out of
+// the sitemap. (Its .vcf is an endpoint, which the sitemap never lists.)
+const unlisted = [...offline, '/card/'];
+
 export default defineConfig({
   site: SITE.url,
   integrations: [
     sitemap({
-      filter: (page) => !offline.some((prefix) => new URL(page).pathname.startsWith(prefix)),
+      filter: (page) => !unlisted.some((prefix) => new URL(page).pathname.startsWith(prefix)),
     }),
   ],
   vite: {

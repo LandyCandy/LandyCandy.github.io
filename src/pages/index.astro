@@ -1,7 +1,9 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import headshot from '../assets/headshot.jpg';
 import { SITE } from '../site.config';
 
 const home = (await getEntry('copy', 'home'))!.data;
@@ -57,13 +59,20 @@ const kickerTail = kicker.at(-1);
           {pages.projects && <a class="btn btn-ghost" href="/projects">View projects</a>}
         </div>
       </div>
-      <div class="relative hidden h-[380px] w-[320px] justify-self-end lg:block">
+      <div class="relative hidden h-[400px] w-[320px] justify-self-end lg:block">
         <span class="absolute -top-9 -left-2 font-mono text-[11px] tracking-[0.1em] text-accent">
           PERSON · 0.998
         </span>
-        <div class="headshot-frame absolute inset-0 flex items-center justify-center rounded border border-line">
-          <!-- TODO: replace with <Image> of the real headshot -->
-          <div class="ro text-center leading-8">[ HEADSHOT ]<br />320 × 380</div>
+        <div class="headshot-frame absolute inset-0 overflow-hidden rounded border border-line">
+          <Image
+            src={headshot}
+            alt={`Portrait of ${SITE.name}`}
+            width={320}
+            height={400}
+            densities={[1, 2]}
+            loading="eager"
+            class="h-full w-full object-cover"
+          />
         </div>
         <span class="corner corner-tl"></span>
         <span class="corner corner-tr"></span>
