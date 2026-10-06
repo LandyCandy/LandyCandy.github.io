@@ -37,6 +37,6 @@ export const CARD: Card = {
 
   // Optional. SPEC §6 keeps email and phone off the site, so these stay out of
   // the vCard until filled in deliberately.
-  // email: 'name@example.com',
+  email: 'landy@brightspotautomation.com',
   // phone: '+13035550100',
 };
